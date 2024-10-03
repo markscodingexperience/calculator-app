@@ -106,7 +106,7 @@ document.getElementById("equals").addEventListener('click', function(){
 });
 
 async function getDataFromApi(expression){
-    const base_URL = "http://api.mathjs.org/v4/?expr="
+    const base_URL = "https://api.mathjs.org/v4/?expr="
     try {
         const response = await fetch(base_URL + expression);
         if(!response.ok) 
