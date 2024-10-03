@@ -49,8 +49,8 @@ document.getElementById("c").addEventListener('click', function(){
 });
 
 document.getElementById("positive").addEventListener('click', function(){
-    charInsert = "+";
-    if (span.textContent.charAt(0) !== '+') 
+    charInsert = "-";
+    if (span.textContent.charAt(0) !== '-') 
         span.textContent = charInsert + span.textContent;  
 });
 
@@ -100,10 +100,28 @@ document.getElementById("equals").addEventListener('click', function(){
         exp = exp.textContent.replace(/\x/g, "*");
     else
         exp = exp.textContent;
-    
-    console.log(exp);
     getDataFromApi(exp); //send the expression to the api
 });
+
+
+const numberDisplay = document.getElementById('numbers');
+const animation = document.querySelectorAll('.button');
+
+animation.forEach(button => {
+    button.addEventListener('click', (event) => {
+
+      // Add the animate class to trigger the animation
+      numberDisplay.classList.add('animate');
+      
+      // Remove the animate class after the animation ends
+      setTimeout(() => {
+        numberDisplay.classList.remove('animate');
+      }, 300); // Match this timeout to the animation duration (0.3s)
+    });
+  });
+
+
+
 
 async function getDataFromApi(expression){
     const base_URL = "https://api.mathjs.org/v4/?expr="
